@@ -26,6 +26,7 @@ from phylim.classify_matrix import (
     ModelPsubs,
     classify_matrix,
 )
+from phylim.delta_col import calc_delta_col
 from phylim.eval_identifiability import IdentCheckRes, eval_identifiability
 
 
@@ -94,6 +95,7 @@ class PhyloLimitRec:
     model_name: Union[str, None]
     boundary_values: Union[list[dict], None]
     nondlc_and_identity: Union[dict[tuple[str, ...], MatrixCategory], None]
+    delta_col: dict[str, float]
 
     def to_rich_dict(self) -> dict:
         result = self.check.to_rich_dict()
@@ -104,6 +106,7 @@ class PhyloLimitRec:
             result["nondlc_and_identity"] = {
                 k[0]: v.value for k, v in self.nondlc_and_identity.items()
             }
+        result["delta_col"] = self.delta_col or {}
         result["version"] = __version__
         return result
 
@@ -169,7 +172,7 @@ class phylim:
         boundary_values = check_bound_app(inference).vio
         psubs_labelled = classify_psubs_app(inference)
         result = eval_identifiability(psubs_labelled, tree, self.strict)
-
+        delta_col = calc_delta_col(load_psubs(_get_lf(inference)))
         return PhyloLimitRec(
             check=result,
             model_name=inference.name,
@@ -177,6 +180,7 @@ class phylim:
             nondlc_and_identity={
                 k: v for k, v in psubs_labelled.items() if v is not DLC
             },
+            delta_col=delta_col,
         )
 
 
