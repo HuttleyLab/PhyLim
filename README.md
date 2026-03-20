@@ -13,8 +13,9 @@ phylim provides a quick, handy method to check the identifiability of a model fi
 The following content will demonstrate how to set up phylim and give some tutorials on the main identifiability check app and other associated apps.
 
 <p align="center">
-<img src="https://figshare.com/ndownloader/files/50904159" alt="tree1" width="600" height="300" />
+<img src="https://ndownloader.figshare.com/files/50904159" alt="tree1" width="600" height="300" />
 </p>
+
 
 ## Installation
 
@@ -179,7 +180,7 @@ phylim provides an app, `phylim_style_tree`, which takes an edge-matrix category
 >>> tree_styler(tree)
 ```
 
-<img src="https://figshare.com/ndownloader/files/50903022" alt="tree1" width="400" />
+<img src="https://ndownloader.figshare.com/files/50903022" alt="tree1" width="400" />
 
 
 You can also colour edges using a user-defined edge-matrix category map, applicable to any tree object! 
@@ -195,4 +196,4 @@ You can also colour edges using a user-defined edge-matrix category map, applica
 >>> tree_styler(tree)
 ```
 
-<img src="https://figshare.com/ndownloader/files/50903019" alt="tree1" width="400" />
+<img src="https://ndownloader.figshare.com/files/50903019" alt="tree1" width="400" />
